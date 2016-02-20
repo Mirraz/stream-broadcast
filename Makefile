@@ -12,18 +12,18 @@ LIBFILES=-levent_core
 LDFLAGS=$(WARNINGS) $(LDOPTIM) $(LIBFILES) $(DEBUG)
 SRC_DIR=.
 BUILD_DIR=build
-EXECUTABLE=stream-boadcast
+EXECUTABLE=stream-broadcast
 
 all: $(BUILD_DIR) $(EXECUTABLE)
 
 $(BUILD_DIR):
 	mkdir $(BUILD_DIR)
 
-$(EXECUTABLE): $(BUILD_DIR)/stream-boadcast.o $(BUILD_DIR)/stack.o
+$(EXECUTABLE): $(BUILD_DIR)/stream-broadcast.o $(BUILD_DIR)/stack.o
 	$(LD) -o $@ $^ $(LDFLAGS)
 	$(STRIP) $@
 
-$(BUILD_DIR)/stream-boadcast.o: $(SRC_DIR)/stream-boadcast.c $(SRC_DIR)/stack.h Makefile
+$(BUILD_DIR)/stream-broadcast.o: $(SRC_DIR)/stream-broadcast.c $(SRC_DIR)/stack.h Makefile
 	$(CC) -o $@ $< -c $(CFLAGS)
 
 $(BUILD_DIR)/stack.o: $(SRC_DIR)/stack.c $(SRC_DIR)/stack.h Makefile
