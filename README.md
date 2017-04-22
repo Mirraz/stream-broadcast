@@ -3,6 +3,9 @@ Broadcast one stdin stream to many clients. It creates linux-socket file, listen
 
 Main purpose (but not only): to start loading video stream without playing it and then start and stop playing without interrupting loading. You can start loading in one terminal and redirect output into `stream-broadcast` (specifying socket file). Then in another terminal you can start playing by `socat UNIX-CONNECT:linux_socket_filename - | any_player_from_stdin` and you can interrupt it and start playing again as many times as you want. Using `stream-broadcast` makes sense for self-synchronizing streams, for example for mpegts video container.
 
+## Requirements
+`libevent`
+
 ## Compilation
 ```
 make
@@ -20,4 +23,3 @@ ffmpeg -i 'http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8' -c c
 socat UNIX-CONNECT:stream.socket - | mpv -
 
 ```
-
